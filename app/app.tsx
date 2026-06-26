@@ -25,7 +25,7 @@ import { handleImageUpload } from "@/lib/shapes";
 import { useMutation, useRedo, useStorage, useUndo } from "@/liveblocks.config";
 import type { ActiveElement, Attributes } from "@/types/type";
 
-const App = () => {
+const App = ({ onLogout }: { onLogout: () => void }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const fabricRef = useRef<fabric.Canvas | null>(null);
@@ -234,6 +234,7 @@ const App = () => {
             syncShapeInStorage,
           });
         }}
+        onLogout={onLogout}
       />
 
       <section className="flex h-full flex-row">

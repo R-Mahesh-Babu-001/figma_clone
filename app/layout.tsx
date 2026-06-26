@@ -16,7 +16,7 @@ const workSans = Work_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#14181F",
+  themeColor: "#09090b",
 };
 
 export const metadata: Metadata = siteConfig;

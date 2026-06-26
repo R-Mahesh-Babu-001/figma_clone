@@ -12,6 +12,7 @@ import type { ActiveElement, NavbarProps } from "@/types/type";
 import { ShapesMenu } from "./shapes-menu";
 import Link from "next/link";
 import { links } from "@/config";
+import { LogOut } from "lucide-react";
 
 export const Navbar = memo(
   ({
@@ -19,7 +20,8 @@ export const Navbar = memo(
     imageInputRef,
     handleImageUpload,
     handleActiveElement,
-  }: NavbarProps) => {
+    onLogout,
+  }: NavbarProps & { onLogout: () => void }) => {
     const isActive = (value: string | Array<ActiveElement>) =>
       (activeElement && activeElement.value === value) ||
       (Array.isArray(value) &&
@@ -86,7 +88,7 @@ export const Navbar = memo(
           ))}
         </ul>
 
-        <div className="flex-row items-center justify-center gap-x-6 md:flex">
+        <div className="flex flex-row items-center justify-center gap-x-4">
           <ActiveUsers />
 
           <Link
@@ -98,6 +100,14 @@ export const Navbar = memo(
           >
             <Image src="/github.svg" alt="GitHub" height={36} width={36} />
           </Link>
+
+          <button
+            onClick={onLogout}
+            className="flex items-center justify-center p-2 rounded-md hover:bg-primary-darkRed text-primary-green hover:text-white transition-colors"
+            title="Log Out"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
         </div>
       </nav>
     );

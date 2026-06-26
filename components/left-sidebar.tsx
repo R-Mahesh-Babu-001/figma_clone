@@ -20,7 +20,7 @@ export const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
             return (
               <div
                 key={shape[1]?.objectId}
-                className="group my-1 flex items-center gap-2 px-5 py-2.5 hover:cursor-pointer hover:bg-primary-green hover:text-primary-black"
+                className="group my-1 flex items-center gap-2 px-5 py-2.5 transition-colors hover:cursor-pointer hover:bg-primary-darkRed hover:text-white border-l-2 border-transparent hover:border-primary-green"
               >
                 <Image
                   src={info?.icon}
