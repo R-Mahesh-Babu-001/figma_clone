@@ -63,6 +63,8 @@ figma-clone/
     |-- settings/
     |-- ui/
     |-- users/
+    |-- auth-page.tsx
+    |-- landing-page.tsx
     |-- left-sidebar.tsx
     |-- live.tsx
     |-- loader.tsx
@@ -99,6 +101,7 @@ figma-clone/
   |- liveblocks.config.ts
   |- netlify.toml
   |- next.config.mjs
+  |- package-lock.json
   |- package.json
   |- postcss.config.mjs
   |- tailwind.config.ts
