@@ -33,6 +33,7 @@
 - [Follow Me](#rocket-follow-me)
 - [Learn More](#books-learn-more)
 - [Deploy on Netlify](#page_with_curl-deploy-on-netlify)
+- [Deploy on Render](#rocket-deploy-on-render)
 - [Give A Star](#star-give-a-star)
 - [Star History](#star2-star-history)
 - [Give A Star](#star-give-a-star)
@@ -41,68 +42,48 @@
 
 ## :bangbang: Folder Structure
 
-Here is the folder structure of this app.
+Here is the professional project structure for this app.
 
 <!--- FOLDER_STRUCTURE_START --->
 ```bash
 figma-clone/
-  |- app/
-    |-- app.tsx
-    |-- apple-icon.png
-    |-- favicon.ico
-    |-- globals.css
-    |-- icon1.png
-    |-- icon2.png
-    |-- layout.tsx
-    |-- page.tsx
-    |-- room.tsx
-  |- components/
-    |-- comments/
-    |-- cursor/
-    |-- reaction/
-    |-- settings/
-    |-- ui/
-    |-- users/
-    |-- left-sidebar.tsx
-    |-- live.tsx
-    |-- loader.tsx
-    |-- navbar.tsx
-    |-- right-sidebar.tsx
-    |-- shapes-menu.tsx
-  |- config/
-    |-- index.ts
-  |- constants/
-    |-- index.ts
-  |- hooks/
-    |-- use-interval.ts
-  |- lib/
-    |-- canvas.ts
-    |-- key-events.ts
-    |-- shapes.ts
-    |-- use-max-zindex.ts
-    |-- utils.ts
-  |- public/
-  |- types/
-    |-- declaration.d.ts
-    |-- styles.d.ts
-    |-- type.ts
-  |- .env.example
-  |- .env/.env.local
-  |- .eslintrc.json
+  |- backend/
+    |-- src/
+    |-- README.md
+    |-- package.json
+  |- frontend/
+    |-- app/
+      |-- app.tsx
+      |-- globals.css
+      |-- layout.tsx
+      |-- page.tsx
+      |-- room.tsx
+    |-- components/
+      |-- comments/
+      |-- cursor/
+      |-- reaction/
+      |-- settings/
+      |-- ui/
+      |-- users/
+    |-- config/
+    |-- constants/
+    |-- hooks/
+    |-- lib/
+    |-- public/
+    |-- types/
+    |-- .env.example
+    |-- .env.local
+    |-- components.json
+    |-- next.config.mjs
+    |-- package.json
+    |-- tailwind.config.ts
+    |-- tsconfig.json
+  |- docs/
+    |-- PROJECT_GROUPING.md
   |- .gitignore
-  |- .prettierrc.json
-  |- bun.lockb
-  |- components.json
-  |- environment.d.ts
-  |- eslint.config.mjs
-  |- favicon.ico
-  |- liveblocks.config.ts
   |- netlify.toml
-  |- next.config.mjs
   |- package.json
-  |- postcss.config.mjs
-  |- tailwind.config.ts
-  |- tsconfig.json
+  |- render.yaml
 ```
 <!--- FOLDER_STRUCTURE_END --->
 
@@ -112,11 +93,11 @@ figma-clone/
 
 1. Make sure **Git** and **NodeJS** is installed.
 2. Clone this repository to your local computer.
-3. Create `.env.local` file in **root** directory.
-4. Contents of `.env.local`:
+3. Create `.env.local` file in the **frontend** directory.
+4. Contents of `frontend/.env.local`:
 
 ```env
-# .env.local
+# frontend/.env.local
 
 # disable next.js telemetry
 NEXT_TELEMETRY_DISABLED=1
@@ -150,11 +131,11 @@ NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=pk_dev_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 3. Save and Secure:
 
-   - Save the changes to the `.env.local` file.
+   - Save the changes to the `frontend/.env.local` file.
 
-4. Install Project Dependencies using `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
+4. Install project dependencies from the repository root using `npm install --prefix frontend --legacy-peer-deps`.
 
-5. Now app is fully configured 👍 and you can start using this app using either one of `npm run dev` or `yarn dev`.
+5. Now the app is configured and you can start it from the root using `npm run dev`.
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
@@ -243,6 +224,25 @@ The simplest way to deploy your React.js app is to use the [Netlify Platform](ht
 Explore the [Netlify deployment documentation](https://docs.netlify.com/site-deploys/create-deploys) for step-by-step instructions on deploying your React.js app on Netlify.
 
 Happy coding, and feel free to share your thoughts and improvements with the [Netlify community](https://community.netlify.com)!
+
+## :rocket: Deploy on Render
+
+This repository is ready for Render free-tier Static Site hosting using `render.yaml`.
+
+1. Push this repository to GitHub.
+2. In Render, select **New +** -> **Blueprint**.
+3. Connect your GitHub repository.
+4. Render detects `render.yaml` and creates the static site.
+5. Add `NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY` in the Render dashboard if you want realtime collaboration. Without it, the app runs in local/offline mode.
+6. Deploy.
+
+Render runs this build from the `frontend/` root directory and publishes `frontend/out`:
+
+- Build: `npm ci && npm run build:render`
+- Publish directory: `out`
+
+For complete Render deployment details, see `docs/render-deploy.md`.
+For grouped project structure details, see `docs/PROJECT_GROUPING.md`.
 
 ## :star: Give A Star
 

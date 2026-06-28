@@ -1,0 +1,12 @@
+.github/
+.vscode/
+.netlify/
+.runlogs/
+coverage/
+.next/
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+backend/node_modules/
+*.log

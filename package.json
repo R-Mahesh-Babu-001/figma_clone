@@ -1,115 +1,20 @@
 {
-  "name": "figma-clone",
+  "name": "figma-clone-workspace",
   "version": "1.0.1",
   "private": true,
+  "description": "Workspace for the Figma clone frontend and backend services.",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ."
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend run start",
+    "lint": "npm --prefix frontend run lint",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "frontend:start": "npm --prefix frontend run start",
+    "backend:dev": "npm --prefix backend run dev"
   },
-  "author": {
-    "name": "Sanidhya Kumar Verma",
-    "email": "sanidhya.verma12345@gmail.com",
-    "url": "https://github.com/sanidhyy"
-  },
-  "description": "A minimalist Figma clone using Fabric.js and Liveblocks for real-time collaboration.",
-  "keywords": [
-    "reactjs",
-    "nextjs",
-    "vercel",
-    "react",
-    "liveblocks",
-    "livekit",
-    "shadcn",
-    "shadcn-ui",
-    "radix-ui",
-    "cn",
-    "clsx",
-    "figma-clone",
-    "realtime-drawing",
-    "live-chat",
-    "live-reactions",
-    "live-updates",
-    "sonner",
-    "zustand",
-    "zod",
-    "lucide-react",
-    "next-themes",
-    "postcss",
-    "prettier",
-    "react-dom",
-    "tailwindcss",
-    "tailwindcss-animate",
-    "ui/ux",
-    "js",
-    "javascript",
-    "typescript",
-    "eslint",
-    "html",
-    "css"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sanidhyy/figma-clone.git"
-  },
-  "homepage": "https://github.com/sanidhyy/figma-clone#readme",
-  "bugs": {
-    "url": "https://github.com/sanidhyy/figma-clone/issues",
-    "email": "sanidhya.verma12345@gmail.com"
-  },
-  "funding": [
-    {
-      "type": "patreon",
-      "url": "https://www.patreon.com/sanidhy"
-    },
-    {
-      "type": "Buy me a coffee",
-      "url": "https://www.buymeacoffee.com/sanidhy"
-    }
-  ],
-  "dependencies": {
-    "@liveblocks/client": "^1.12.0",
-    "@liveblocks/react": "^1.12.0",
-    "@liveblocks/react-comments": "^1.12.0",
-    "@radix-ui/react-context-menu": "^2.2.16",
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
-    "@radix-ui/react-label": "^2.1.8",
-    "@radix-ui/react-select": "^2.2.6",
-    "@radix-ui/react-slot": "^1.2.4",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "fabric": "^5.5.2",
-    "jspdf": "^4.2.1",
-    "lucide-react": "^1.17.0",
-    "react": "19.2.5",
-    "react-dom": "19.2.7",
-    "next": "16.2.6",
-    "tailwind-merge": "^3.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "uuid": "^13.0.0"
-  },
-  "devDependencies": {
-    "@types/fabric": "^5.3.11",
-    "@types/node": "^25",
-    "@types/react": "19.2.10",
-    "@types/react-dom": "19.2.3",
-    "@types/uuid": "^11.0.0",
-    "eslint": "10",
-    "eslint-config-next": "16.2.7",
-    "eslint-plugin-unused-imports": "^4.4.1",
-    "postcss": "^8",
-    "prettier": "^3.8.3",
-    "prettier-plugin-tailwindcss": "^0.8.0",
-    "tailwindcss": "^3.4.19",
-    "typescript": "^6"
-  },
-  "trustedDependencies": [
-    "core-js"
-  ],
-  "overrides": {
-    "@types/react": "19.2.10",
-    "@types/react-dom": "19.2.3"
-  }
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
 }

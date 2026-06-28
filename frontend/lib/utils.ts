@@ -98,24 +98,86 @@ export const getShapeInfo = (shapeType: string) => {
   }
 };
 
-export const exportToPdf = () => {
+const ADMIN_EMAIL = "maheshbabur9972@gmail.com";
+
+const getCanvasPdf = () => {
   const canvas = document.querySelector("canvas");
 
-  if (!canvas) return;
+  if (!canvas) return null;
 
-  // use jspdf
   const doc = new jsPDF({
     orientation: "landscape",
     unit: "px",
     format: [canvas.width, canvas.height],
   });
 
-  // get the canvas data url
   const data = canvas.toDataURL();
 
-  // add the image to the pdf
   doc.addImage(data, "PNG", 0, 0, canvas.width, canvas.height);
 
-  // download the pdf
+  return doc;
+};
+
+const downloadBlob = (blob: Blob, filename: string) => {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+};
+
+const blobToBase64 = (blob: Blob) =>
+  new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result?.toString() ?? "";
+      resolve(result.split(",")[1] ?? "");
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+
+export const exportToPdf = () => {
+  const doc = getCanvasPdf();
+
+  if (!doc) return;
+
   doc.save("canvas.pdf");
+};
+
+export const sendCanvasToAdmin = async () => {
+  const doc = getCanvasPdf();
+
+  if (!doc) return;
+
+  const pdfBlob = doc.output("blob");
+  const pdfBase64 = await blobToBase64(pdfBlob);
+  const boundary = `figpro-${Date.now()}`;
+  const eml = [
+    `To: ${ADMIN_EMAIL}`,
+    "Subject: ",
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/mixed; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    'Content-Type: text/plain; charset="UTF-8"',
+    "Content-Transfer-Encoding: 7bit",
+    "",
+    "",
+    `--${boundary}`,
+    'Content-Type: application/pdf; name="canvas.pdf"',
+    'Content-Disposition: attachment; filename="canvas.pdf"',
+    "Content-Transfer-Encoding: base64",
+    "",
+    pdfBase64.replace(/(.{76})/g, "$1\r\n"),
+    `--${boundary}--`,
+  ].join("\r\n");
+
+  downloadBlob(
+    new Blob([eml], { type: "message/rfc822" }),
+    "send-canvas-to-admin.eml"
+  );
 };

@@ -8,6 +8,25 @@ import { Text } from "@/components/settings/text";
 import { modifyShape } from "@/lib/shapes";
 import type { RightSidebarProps } from "@/types/type";
 
+/* ── Section wrapper ─────────────────────────────────── */
+const SidebarSection = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div style={{ borderBottom: "1px solid #27272a" }}>
+    <p
+      className="px-4 pt-3 pb-2 text-[10px] font-semibold uppercase tracking-[0.12em]"
+      style={{ color: "#52525b" }}
+    >
+      {label}
+    </p>
+    <div className="px-4 pb-3">{children}</div>
+  </div>
+);
+
 export const RightSidebar = ({
   activeObjectRef,
   elementAttributes,
@@ -18,14 +37,10 @@ export const RightSidebar = ({
 }: RightSidebarProps) => {
   const colorInputRef = useRef(null);
   const strokeInputRef = useRef(null);
+
   const handleInputChange = (property: string, value: string) => {
     if (!isEditingRef?.current) isEditingRef.current = true;
-
-    setElementAttributes((prevAttributes) => ({
-      ...prevAttributes,
-      [property]: value,
-    }));
-
+    setElementAttributes((prev) => ({ ...prev, [property]: value }));
     modifyShape({
       canvas: fabricRef.current as fabric.Canvas,
       property,
@@ -36,13 +51,34 @@ export const RightSidebar = ({
   };
 
   return (
-    <section className="sticky right-0 flex h-full min-w-[227px] select-none flex-col border-t border-primary-grey-200 bg-primary-black text-primary-grey-300 max-sm:hidden">
-      <h3 className="px-5 pt-4 text-xs uppercase">Design</h3>
+    <section
+      className="sticky right-0 flex h-full min-w-[220px] max-w-[220px] select-none flex-col overflow-y-auto max-sm:hidden"
+      style={{
+        background: "#09090b",
+        borderLeft: "1px solid #27272a",
+        borderTop: "1px solid #27272a",
+      }}
+    >
+      {/* Header */}
+      <div
+        className="flex items-center justify-between px-4 py-3"
+        style={{ borderBottom: "1px solid #27272a" }}
+      >
+        <span
+          className="text-[11px] font-semibold uppercase tracking-[0.1em]"
+          style={{ color: "#52525b" }}
+        >
+          Design
+        </span>
+        <span
+          className="rounded px-1.5 py-0.5 text-[10px] font-medium"
+          style={{ background: "#18181b", color: "#71717a" }}
+        >
+          Properties
+        </span>
+      </div>
 
-      <span className="mt-3 border-b border-primary-grey-200 px-5 pb-4 text-xs text-primary-grey-300">
-        Make changes to canvas as you like
-      </span>
-
+      {/* Dimensions */}
       <Dimensions
         isEditingRef={isEditingRef}
         width={elementAttributes.width}
@@ -50,6 +86,7 @@ export const RightSidebar = ({
         handleInputChange={handleInputChange}
       />
 
+      {/* Text */}
       <Text
         fontFamily={elementAttributes.fontFamily}
         fontSize={elementAttributes.fontSize}
@@ -57,6 +94,7 @@ export const RightSidebar = ({
         handleInputChange={handleInputChange}
       />
 
+      {/* Fill color */}
       <Color
         inputRef={colorInputRef}
         attribute={elementAttributes.fill}
@@ -64,6 +102,8 @@ export const RightSidebar = ({
         handleInputChange={handleInputChange}
         attributeType="fill"
       />
+
+      {/* Stroke */}
       <Color
         inputRef={strokeInputRef}
         attribute={elementAttributes.stroke}
@@ -72,6 +112,7 @@ export const RightSidebar = ({
         attributeType="stroke"
       />
 
+      {/* Export */}
       <Export />
     </section>
   );

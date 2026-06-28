@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: figma-clone
+    runtime: static
+    rootDir: frontend
+    plan: free
+    autoDeploy: true
+    buildCommand: npm ci && npm run build:render
+    staticPublishPath: out
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY
+        sync: false
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
