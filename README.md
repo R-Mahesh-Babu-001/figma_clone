@@ -46,25 +46,14 @@ Here is the professional project structure for this app.
 
 <!--- FOLDER_STRUCTURE_START --->
 ```bash
-figma-clone/
+figma-clone-workspace/
   |- backend/
     |-- src/
-    |-- README.md
     |-- package.json
+  |- docs/
   |- frontend/
     |-- app/
-      |-- app.tsx
-      |-- globals.css
-      |-- layout.tsx
-      |-- page.tsx
-      |-- room.tsx
     |-- components/
-      |-- comments/
-      |-- cursor/
-      |-- reaction/
-      |-- settings/
-      |-- ui/
-      |-- users/
     |-- config/
     |-- constants/
     |-- hooks/
@@ -72,18 +61,26 @@ figma-clone/
     |-- public/
     |-- types/
     |-- .env.example
-    |-- .env.local
+    |-- .eslintrc.json
+    |-- .prettierrc.json
+    |-- bun.lockb
     |-- components.json
+    |-- environment.d.ts
+    |-- eslint.config.mjs
+    |-- favicon.ico
+    |-- liveblocks.config.tsx
     |-- next.config.mjs
+    |-- package-lock.json
     |-- package.json
+    |-- postcss.config.mjs
     |-- tailwind.config.ts
     |-- tsconfig.json
-  |- docs/
-    |-- PROJECT_GROUPING.md
   |- .gitignore
+  |- .renderignore
   |- netlify.toml
   |- package.json
   |- render.yaml
+  |- run-dev.cmd
 ```
 <!--- FOLDER_STRUCTURE_END --->
 
@@ -164,38 +161,6 @@ You might encounter some bugs while using this app. You are more than welcome to
 Useful resources and dependencies that are used in Figma Clone.
 
 <!--- DEPENDENCIES_START --->
-- [@liveblocks/client](https://www.npmjs.com/package/@liveblocks/client): ^1.12.0
-- [@liveblocks/react](https://www.npmjs.com/package/@liveblocks/react): ^1.12.0
-- [@liveblocks/react-comments](https://www.npmjs.com/package/@liveblocks/react-comments): ^1.12.0
-- [@radix-ui/react-context-menu](https://www.npmjs.com/package/@radix-ui/react-context-menu): ^2.2.16
-- [@radix-ui/react-dropdown-menu](https://www.npmjs.com/package/@radix-ui/react-dropdown-menu): ^2.1.16
-- [@radix-ui/react-label](https://www.npmjs.com/package/@radix-ui/react-label): ^2.1.8
-- [@radix-ui/react-select](https://www.npmjs.com/package/@radix-ui/react-select): ^2.2.6
-- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.2.4
-- [@types/fabric](https://www.npmjs.com/package/@types/fabric): ^5.3.11
-- [@types/node](https://www.npmjs.com/package/@types/node): ^25
-- [@types/react](https://www.npmjs.com/package/@types/react): 19.2.10
-- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): 19.2.3
-- [@types/uuid](https://www.npmjs.com/package/@types/uuid): ^11.0.0
-- [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
-- [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
-- [eslint](https://www.npmjs.com/package/eslint): 10
-- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 16.2.7
-- [eslint-plugin-unused-imports](https://www.npmjs.com/package/eslint-plugin-unused-imports): ^4.4.1
-- [fabric](https://www.npmjs.com/package/fabric): ^5.5.2
-- [jspdf](https://www.npmjs.com/package/jspdf): ^4.2.1
-- [lucide-react](https://www.npmjs.com/package/lucide-react): ^1.17.0
-- [next](https://www.npmjs.com/package/next): 16.2.6
-- [postcss](https://www.npmjs.com/package/postcss): ^8
-- [prettier](https://www.npmjs.com/package/prettier): ^3.8.3
-- [prettier-plugin-tailwindcss](https://www.npmjs.com/package/prettier-plugin-tailwindcss): ^0.8.0
-- [react](https://www.npmjs.com/package/react): 19.2.5
-- [react-dom](https://www.npmjs.com/package/react-dom): 19.2.7
-- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^3.6.0
-- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.4.19
-- [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate): ^1.0.7
-- [typescript](https://www.npmjs.com/package/typescript): ^6
-- [uuid](https://www.npmjs.com/package/uuid): ^13.0.0
 
 <!--- DEPENDENCIES_END --->
 
