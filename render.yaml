@@ -2,10 +2,9 @@ services:
   - type: web
     name: figma-clone
     runtime: static
-    rootDir: frontend
     autoDeploy: true
-    buildCommand: npm ci && npm run build:render
-    staticPublishPath: out
+    buildCommand: cd frontend && npm install --legacy-peer-deps --no-audit --no-fund && npm run build:render
+    staticPublishPath: frontend/out
     routes:
       - type: rewrite
         source: /*

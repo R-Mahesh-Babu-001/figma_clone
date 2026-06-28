@@ -236,10 +236,10 @@ This repository is ready for Render free-tier Static Site hosting using `render.
 5. Add `NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY` in the Render dashboard if you want realtime collaboration. Without it, the app runs in local/offline mode.
 6. Deploy.
 
-Render runs this build from the `frontend/` root directory and publishes `frontend/out`:
+Render runs this build from the repository root and publishes `frontend/out`:
 
-- Build: `npm ci && npm run build:render`
-- Publish directory: `out`
+- Build: `cd frontend && npm install --legacy-peer-deps --no-audit --no-fund && npm run build:render`
+- Publish directory: `frontend/out`
 
 For complete Render deployment details, see `docs/render-deploy.md`.
 For grouped project structure details, see `docs/PROJECT_GROUPING.md`.

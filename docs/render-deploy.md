@@ -7,9 +7,8 @@ This project is configured for Render free-tier Static Site hosting.
 Use the existing `render.yaml` Blueprint.
 
 - Runtime: `static`
-- Root directory: `frontend`
-- Build command: `npm ci && npm run build:render`
-- Publish directory: `out`
+- Build command: `cd frontend && npm install --legacy-peer-deps --no-audit --no-fund && npm run build:render`
+- Publish directory: `frontend/out`
 - Rewrite rule: `/*` -> `/index.html`
 
 ## Environment Variables

@@ -50,7 +50,7 @@ This codebase is grouped as a small workspace so frontend and backend responsibi
 
 ## Render Free Tier Static Site
 
-- Build: `npm ci && npm run build:render`
-- Publish directory: `out`
+- Build: `cd frontend && npm install --legacy-peer-deps --no-audit --no-fund && npm run build:render`
+- Publish directory: `frontend/out`
 
-Render runs the build from `frontend/` using `rootDir: frontend` in `render.yaml`.
+Render runs the build from the repository root using explicit `frontend` paths in `render.yaml`.
