@@ -3,7 +3,6 @@ services:
     name: figma-clone
     runtime: static
     rootDir: frontend
-    plan: free
     autoDeploy: true
     buildCommand: npm ci && npm run build:render
     staticPublishPath: out
